@@ -8,9 +8,8 @@ function PokemonSearch(props) {
   }
   return (
     <div>
-      <input type="text" onChange={(event) => {setPokemonSearch(event.target.value)}} />
+      <input type="text" placeholder='pikachu' onChange={(event) => {setPokemonSearch(event.target.value)}} />
       <button onClick={searchForPokemon}>Search for Pokemon</button>
-      <p>{ pokemonSearch }</p>
     </div>
   );
 }
