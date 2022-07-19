@@ -1,29 +1,15 @@
 import { useEffect, useState } from 'react'
+import { getPokemon } from '../services/getPokemon.js'
 
 function PokemonItem(props) {
   const [pokemon, setPokemon] = useState({})
   const [noPokemon, setNoPokemon] = useState(false)
   const [loadingPokemon, setLoadingPokemon] = useState(false)
   useEffect(() => {
-    console.log('props on pokemonItem', `https://pokeapi.co/api/v2/pokemon/${props.searchOnApp}`);
-    fetch(`https://pokeapi.co/api/v2/pokemon/${props.searchOnApp}`)
-      .then(response => {
-        setLoadingPokemon(true)
-        setNoPokemon(true)
-        return response.json()
-      })
-      .then(data => {
-        console.log('data12',data)
-        setPokemon(data)
-        setLoadingPokemon(false)
-        setNoPokemon(false)
-      })
-      .catch(error => {
-        console.error(error)
-        setLoadingPokemon(false)
-        setNoPokemon(true)
-      });
+    const resposta = getPokemon(props.searchOnApp)
+    console.log('resposta', resposta);
   }, [props.searchOnApp]);
+
 
   return (
     <div>
@@ -41,7 +27,8 @@ function PokemonItem(props) {
         </div>
       }
       {loadingPokemon && 'Loading pokemon...'}
-  </div>
+
+    </div>
   );
 }
 

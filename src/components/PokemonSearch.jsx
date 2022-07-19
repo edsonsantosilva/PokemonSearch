@@ -4,7 +4,7 @@ function PokemonSearch(props) {
   const [pokemonSearch, setPokemonSearch] = useState('')
   
   function searchForPokemon(event) {
-    props.nameToSearch(pokemonSearch)
+    props.searchForPokemon(pokemonSearch)
   }
   return (
     <div>

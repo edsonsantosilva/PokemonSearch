@@ -4,20 +4,20 @@ import PokemonItem from './components/PokemonItem';
 import PokemonSearch from './components/PokemonSearch';
 
 function App() {
-  const setMySearch = (event) => {
-    console.log(event);
-    setSearchOnApp(event)
-  }
+  const searchForPokemon = (event) => setSearchOnApp(event)
+  
   const [searchOnApp, setSearchOnApp] = useState('')
 
   return (
     <div>
       <header>
         <div>
-          <PokemonSearch nameToSearch={setMySearch}/>
-          <PokemonItem searchOnApp={searchOnApp}/>
+          <PokemonSearch searchForPokemon={searchForPokemon}/>
         </div>
       </header>
+      <section>
+        <PokemonItem searchOnApp={searchOnApp}/>
+      </section>
     </div>
   );
 }
